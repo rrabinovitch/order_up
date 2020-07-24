@@ -1,0 +1,7 @@
+<%# not sure whether this file should be in `/views/ingredients` as is OR `/views/chefs` as `chef_ingredients_index` or something like that (since can't there potentially be just an ingredients index page without it being a list associated with a specific chef?)%>
+<h1><%= "#{@chef.name}'s Ingredients List" %></h1>
+<ul>
+  <% @chef.unique_ingredients do |ingredient| %>
+    <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
