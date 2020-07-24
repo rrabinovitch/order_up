@@ -3,7 +3,6 @@ class Chef <ApplicationRecord
   has_many :dishes
 
   def unique_ingredients
-    all_ingredients = dishes.select('dishes.*, ingredients.*').joins(:ingredients)
-    unique_ingredients = all_ingredients.pluck(:name).uniq
+    dishes.select('dishes.*, ingredients.*').joins(:ingredients).distinct.pluck('ingredients.name')
   end
 end
