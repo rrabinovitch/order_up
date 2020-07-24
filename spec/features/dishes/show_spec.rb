@@ -7,7 +7,7 @@ RSpec.describe "When I visit a dish's show page" do
     ingredient_1 = dish.ingredients.create!(name: "Eggs", calories: 90)
     ingredient_2 = dish.ingredients.create!(name: "Tomatoes", calories: 50)
     ingredient_3 = dish.ingredients.create!(name: "Onions", calories: 30)
-binding.pry
+
     visit dish_path(dish)
 
     dish.ingredients.each do |ingredient|
@@ -15,5 +15,7 @@ binding.pry
     end
 
     expect(page).to have_content(chef.name)
+
+    expect(page).to have_content("Total calories: 170")
   end
 end
